@@ -72,7 +72,7 @@ export const Banner = () => {
                     </p>
                 </div>
                 <div className='hireme-container'>
-                    <button className='hireme' onClick={() => {console.log('hire me')}}> hire me</button>
+                    <a href="mailto:jakub.frechowicz@gmail.com?subject=Job%20offer"><button className='hireme'> hire me</button></a>
                     <div className='hiremebg'></div>
                 </div>
                 </Col>

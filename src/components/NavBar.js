@@ -59,9 +59,9 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="#"><GithubOutlined style={{ color: '#D8D8D8' }} /></a>
-              <a href="#"><LinkedinFilled style={{ color: '#D8D8D8' }} /></a>
-              <a href="#"><MailOutlined style={{ color: '#D8D8D8' }} /></a>
+              <a href="https://github.com/jackobpy"><GithubOutlined style={{ color: '#D8D8D8' }} /></a>
+              <a href="https://www.linkedin.com/in/jakubfrechowicz/"><LinkedinFilled style={{ color: '#D8D8D8' }} /></a>
+              <a href="mailto:jakub.frechowicz@gmail.com"><MailOutlined style={{ color: '#D8D8D8' }} /></a>
             </div>
           </span>
         </Navbar.Collapse>

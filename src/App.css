@@ -311,6 +311,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
   padding-bottom: 30px;
 }
 
+@media (max-width: 600px) {
+  .section-header {
+    font-size: 60px;
+  }
+}
+
 .skill-item{
   background-color: #D9D9D9;
   border-radius: 11px;
