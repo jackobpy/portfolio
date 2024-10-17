@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://jackobpy.github.io/portfolio",
+  "homepage": "https://jakubfrechowicz.com",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
