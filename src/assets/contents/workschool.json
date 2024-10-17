@@ -1,0 +1,42 @@
+[
+    {
+        "dates": "2023-2026",
+        "title": "Delft University of Technology",
+        "subtitle": "BSc Computer Science and Engineering",
+        "feature": "9.33/10.00 (GPA: 4.00)",
+        "paragraph": "I am the 9th highest scoring CS/Math student in the Netherlands with a strong academic record, completing all courses on my first attempt. I am passionate about expanding my knowledge of algorithms, machine learning, and web dev.",
+        "imagepath": "/public/tudelft.png",
+        "imagelink": "https://tudelft.nl/",
+        "leftAligned": true
+    },
+    {
+        "dates": "2019-2023",
+        "title": "Staszic High School in Lublin",
+        "subtitle": "International Baccalaureate DP",
+        "feature": "44/45 points (EE: A, TOK: A)",
+        "paragraph": "I graduated high school as the valedictorian, which was an incredible honor. During my time there I also placed 4th in the team competition at International Mathematics Olympiad ISMTF. Additionally, I received the Prime Minister's Scholarship in recognition of the outstanding academic performance throughout high school.",
+        "imagepath": "/public/staszic.png",
+        "imagelink": "https://lo1.lublin.pl/",
+        "leftAligned": false
+    },
+    {
+        "dates": "2024 - currently",
+        "title": "Delft University of Technology",
+        "subtitle": "Teaching Assistant",
+        "feature": null,
+        "paragraph": "Recently I have started my position as a Teaching Assistant (TA) in Web and Database Technology course. As a TA, my role is to help students grasp concepts they find difficult during the lab sessions. The topics covered in the course include: introduction to databases, database design, (non-)relational database systems, SQL, web front-end and back-end development, HTML, CSS, JS, Node.js.",
+        "imagepath": "/public/tudelft.png",
+        "imagelink": "https://tudelft.nl/",
+        "leftAligned": true
+    },
+    {
+        "dates": "2024 - currently",
+        "title": "Lanterna Education",
+        "subtitle": "IB DP Mathematics Tutor",
+        "feature": null,
+        "paragraph": "Lanterna is a leading online tutoring platform known for its rigorous hiring process, requiring strong teaching abilities and exceptional communication skills. It is through this comapny that I provide high-quality tutoring sessions in IB DP Mathematics course. Moreover, I create tailored study plans to fit each student’s personal needs, helping them acheive their academic goals.",
+        "imagepath": "/public/lanterna.png",
+        "imagelink": "https://lanterna.com/",
+        "leftAligned": false
+    }
+]
