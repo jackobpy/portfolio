@@ -8,6 +8,7 @@ import { GithubOutlined, LinkedinFilled, MailOutlined } from '@ant-design/icons'
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -36,12 +37,32 @@ export const NavBar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const navbar = document.querySelector(".navbar-collapse");
+    
+    const updateNavbarState = () => {
+      if (navbar && (navbar.classList.contains("show") || navbar.classList.contains("collapsing"))) {
+        setExpanded(true);
+      } else {
+        setExpanded(false);
+      }
+    };
+
+    updateNavbarState();
+    navbar.addEventListener("transitionend", updateNavbarState);
+    navbar.addEventListener("transitionstart", updateNavbarState);
+    return () => {
+      navbar.removeEventListener("transitionend", updateNavbarState);
+      navbar.removeEventListener("transitionstart", updateNavbarState);
+    };
+  }, []);
+
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
 
   return (
-    <Navbar expand="lg" className={scrolled ? 'scrolled' : ''}>
+    <Navbar expand="lg" className={scrolled || expanded ? 'scrolled' : ''}>
       <Container>
         <Navbar.Brand href="#home">
           <img src={logo} alt="Logo" />

@@ -33,7 +33,7 @@ body {
   overflow-x: hidden;
   position: relative;
   background-color: #101e1d !important;
-  color: #D8D8D8 !important;
+  color: #f3f3f3 !important;
   font-family: 'Afacad', sans-serif !important;
 }
 
@@ -65,7 +65,7 @@ nav.navbar a.navbar-brand{
 
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 500;
-  color: #D8D8D8 !important;
+  color: #f3f3f3 !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
   font-size: 24px;
@@ -118,7 +118,6 @@ span.navbar-text{
   transition: transform 0.15s ease-in-out;
 }
 
-
 /* Navbar toggler icon */
 nav.navbar .navbar-toggler:active,
 nav.navbar .navbar-toggler:focus{
@@ -136,19 +135,19 @@ nav.navbar .navbar-toggler-icon {
   height: 18px;
   background-image: none;
   position: relative;
-  border-bottom: 2px solid #D8D8D8;
+  border-bottom: 2px solid #f3f3f3;
   transition: all 300ms linear;
   top: -2px;
 }
 nav.navbar .navbar-toggler-icon:focus{
-  border-bottom: 2px solid #D8D8D8;
+  border-bottom: 2px solid #f3f3f3;
 }
 nav.navbar .navbar-toggler-icon:after,
 nav.navbar .navbar-toggler-icon:before{
   width: 24px;
   position: absolute;
   height: 2px;
-  background-color: #D8D8D8;
+  background-color: #f3f3f3;
   top: 0;
   left: 0;
   content: '';
@@ -160,13 +159,13 @@ nav.navbar .navbar-toggler-icon:after{
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after{
   transform: rotate(45deg);
-  background-color: #D8D8D8;
+  background-color: #f3f3f3;
   height: 2px;
 }
 
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before{
   transform: translateY(8px) rotate(-45deg);
-  background-color: #D8D8D8;
+  background-color: #f3f3f3;
   height: 2px;
 }
 
@@ -200,10 +199,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
   font-weight: 500;
   font-size: 32px;
   display: inline-block;
+  line-height: 0.8;
 }
 .wrap-container{
   padding-bottom: 20px;
   display: inline-block;
+  height: 100px;
 }
 
 .blinking {
@@ -212,16 +213,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 
 @keyframes blink-border {
   0% {
-    color: #D8D8D8;
+    color: #f3f3f3;
   }
   60%{
-    color: #D8D8D8;
+    color: #f3f3f3;
   }
   80% {
    color: transparent;
   }
   100% {
-    color: #D8D8D8;
+    color: #f3f3f3;
   }
 }
 
@@ -241,7 +242,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
   width: 130px;
   height: 45px;
   border: none;
-  background-color: #D8D8D8;
+  background-color: #f3f3f3;
   color:#101e1d !important;
   font-size: 24px;
   font-weight: 500;
@@ -270,7 +271,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 }
 
 .scroll-indicator span {
-  color: #D8D8D8;
+  color: #f3f3f3;
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -278,7 +279,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 }
 
 .scroll-line {
-  border-left: 2px dotted #D8D8D8;
+  border-left: 2px dotted #f3f3f3;
   height: 150px;
   opacity: 0.8;
   margin-left: 60px;
@@ -286,7 +287,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 
 
 #about{
-  background-color: #D9D9D9;
+  background-color: #f3f3f3;
   color: #121E1D;
   position: relative;
   padding-bottom: 10px;
@@ -318,7 +319,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 }
 
 .skill-item{
-  background-color: #D9D9D9;
+  background-color: #f3f3f3;
   border-radius: 11px;
   height: 200px;
   margin: 0 20px;
@@ -377,20 +378,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 .school-work .subtitle{
   font-size: 24px;
   font-weight: 500;
-  color: #D9D9D9;
+  color: #f3f3f3;
   margin-bottom: 5px;
 }
 
 .school-work .feature{
   font-size: 20px;
   font-weight: 700;
-  color: #D9D9D9;
+  color: #f3f3f3;
 }
 
 .school-work .paragraph{
   font-size: 20px;
   font-weight: 500;
-  color: #D9D9D9;
+  color: #f3f3f3;
   text-align: justify;
 }
 
@@ -414,6 +415,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 @media (max-width: 767px) {
   .image-wrapper {
     display: none;
+  }
+}
+
+@media (max-width: 995px) {
+  .stroke {
+    display: none !important;
   }
 }
 
@@ -459,7 +466,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 }
 
 #projects{
-  background-color: #D9D9D9;
+  background-color: #f3f3f3;
   color:#101e1d;
   padding-bottom: 50px;
 }
