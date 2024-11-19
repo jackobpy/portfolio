@@ -424,6 +424,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
   }
 }
 
+.flipped{
+  transform: rotateX(180deg);
+}
+
 .image-wrapper:hover{
   transform: translate(-5px, -5px);
 }

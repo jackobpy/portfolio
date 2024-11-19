@@ -20,7 +20,7 @@
         "leftAligned": false
     },
     {
-        "dates": "2024 - currently",
+        "dates": "11/2024 - currently",
         "title": "Delft University of Technology",
         "subtitle": "Teaching Assistant",
         "feature": null,
@@ -30,13 +30,33 @@
         "leftAligned": true
     },
     {
-        "dates": "2024 - currently",
+        "dates": "08/2024 - 11/2024",
         "title": "Lanterna Education",
         "subtitle": "IB DP Mathematics Tutor",
         "feature": null,
-        "paragraph": "Lanterna is a leading online tutoring platform known for its rigorous hiring process, requiring strong teaching abilities and exceptional communication skills. It is through this comapny that I provide high-quality tutoring sessions in IB DP Mathematics course. Moreover, I create tailored study plans to fit each student’s personal needs, helping them acheive their academic goals.",
+        "paragraph": "Lanterna is a leading online tutoring platform known for its rigorous hiring process, requiring strong teaching abilities and exceptional communication skills. It is through this comapny that I provided high-quality tutoring sessions in IB DP Mathematics course. Moreover, I created tailored study plans to fit each student’s personal needs, helping them acheive their academic goals.",
         "imagepath": "/public/lanterna.png",
         "imagelink": "https://lanterna.com/",
         "leftAligned": false
+    },
+    {
+        "dates": "10/2024 - currently",
+        "title": "PRIME - TU Delft",
+        "subtitle": "Teaching Assistant",
+        "feature": null,
+        "paragraph": "\"The PRogramme of Innovation in Mathematics Education (PRIME) is all about redesigning mathematics courses for engineers. As such it is part of the Interfaculty Teaching from the department of Applied Mathematics (DIAM) at TU Delft.\" It is at PRIME that I have the opportunity to contribute to improving the quality of mathematics education for engineers at TU Delft through various projects.",
+        "imagepath": "/public/lanterna.png",
+        "imagelink": "https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/applied-mathematics/studeren/prime",
+        "leftAligned": false
+    },
+    {
+        "dates": "10/2024 - currently",
+        "title": "TeachBooks - TU Delft",
+        "subtitle": "Teaching Assistant - Developer",
+        "feature": null,
+        "paragraph": "At TeachBooks, I help with the development of interactive textbooks using the JupyterBook platform with features like embedded exercises, visualizations, and applets. TeachBooks simplifies the process for educators by providing templates, manuals, hosting, software tools, and community support. It is at TeachBooks where I can combine my passion for education and computer science.",
+        "imagepath": "/public/lanterna.png",
+        "imagelink": "https://teachbooks.tudelft.nl",
+        "leftAligned": true
     }
 ]
