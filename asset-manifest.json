@@ -1,9 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.606a7a29.css",
-    "main.js": "/static/js/main.8be1b773.js",
+    "main.css": "/static/css/main.a39a391b.css",
+    "main.js": "/static/js/main.407dc9a4.js",
     "static/media/website.png": "/static/media/website.6c3dbcc7e4cd6653be53.png",
+    "static/media/sphinxtudelfttheme.png": "/static/media/sphinxtudelfttheme.92c277592282d64fac1c.png",
     "static/media/splitty.png": "/static/media/splitty.1a0ea2c4daa31a928b7f.png",
+    "static/media/teachbooks.png": "/static/media/teachbooks.71d6e928a77563bb4e9a.png",
+    "static/media/prime.jpg": "/static/media/prime.45d6e9e4d701a9134c6e.jpg",
     "static/media/AfacadFlux-Light.ttf": "/static/media/AfacadFlux-Light.3dc4211bbcc4bd1a6f2c.ttf",
     "static/media/AfacadFlux-Bold.ttf": "/static/media/AfacadFlux-Bold.8b5e3b6a0aa25e46b09e.ttf",
     "static/media/AfacadFlux-Regular.ttf": "/static/media/AfacadFlux-Regular.950f1dc9b72931e19d93.ttf",
@@ -26,11 +29,11 @@
     "static/media/javascript.svg": "/static/media/javascript.c9f0a72ec86ab6de952b107f64e32cc9.svg",
     "index.html": "/index.html",
     "static/media/bg.svg": "/static/media/bg.e424a0ac03b2b111531a.svg",
-    "main.606a7a29.css.map": "/static/css/main.606a7a29.css.map",
-    "main.8be1b773.js.map": "/static/js/main.8be1b773.js.map"
+    "main.a39a391b.css.map": "/static/css/main.a39a391b.css.map",
+    "main.407dc9a4.js.map": "/static/js/main.407dc9a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.606a7a29.css",
-    "static/js/main.8be1b773.js"
+    "static/css/main.a39a391b.css",
+    "static/js/main.407dc9a4.js"
   ]
 }
