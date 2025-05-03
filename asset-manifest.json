@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a39a391b.css",
-    "main.js": "/static/js/main.407dc9a4.js",
+    "main.css": "/static/css/main.6f9f4b94.css",
+    "main.js": "/static/js/main.d185d8a0.js",
     "static/media/website.png": "/static/media/website.6c3dbcc7e4cd6653be53.png",
     "static/media/sphinxtudelfttheme.png": "/static/media/sphinxtudelfttheme.92c277592282d64fac1c.png",
     "static/media/splitty.png": "/static/media/splitty.1a0ea2c4daa31a928b7f.png",
@@ -11,6 +11,7 @@
     "static/media/AfacadFlux-Bold.ttf": "/static/media/AfacadFlux-Bold.8b5e3b6a0aa25e46b09e.ttf",
     "static/media/AfacadFlux-Regular.ttf": "/static/media/AfacadFlux-Regular.950f1dc9b72931e19d93.ttf",
     "static/media/diff.png": "/static/media/diff.c2a80746e4caaba53783.png",
+    "static/media/google.png": "/static/media/google.0f2cb8083f7558fb7678.png",
     "static/media/staszic.png": "/static/media/staszic.ac32ac94f84ae44f291e.png",
     "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
@@ -29,11 +30,11 @@
     "static/media/javascript.svg": "/static/media/javascript.c9f0a72ec86ab6de952b107f64e32cc9.svg",
     "index.html": "/index.html",
     "static/media/bg.svg": "/static/media/bg.e424a0ac03b2b111531a.svg",
-    "main.a39a391b.css.map": "/static/css/main.a39a391b.css.map",
-    "main.407dc9a4.js.map": "/static/js/main.407dc9a4.js.map"
+    "main.6f9f4b94.css.map": "/static/css/main.6f9f4b94.css.map",
+    "main.d185d8a0.js.map": "/static/js/main.d185d8a0.js.map"
   },
   "entrypoints": [
-    "static/css/main.a39a391b.css",
-    "static/js/main.407dc9a4.js"
+    "static/css/main.6f9f4b94.css",
+    "static/js/main.d185d8a0.js"
   ]
 }
