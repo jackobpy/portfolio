@@ -13,7 +13,7 @@ export const Banner = () => {
     const cursorElementRef = useRef(null);
 
     const tick = useCallback(() => {
-        const toRotate = ["BSc CSE Student", "IB Math tutor", "9th best CS/Math Student in NL", "Teaching Assistant", "Aspiring Software Engineer"]
+        const toRotate = ["BSc CSE Student @ TU Delft", "SWE Intern @ Google", "9th best CS/Math Student in NL for 2023/24", "Teaching Assistant", "Aspiring Software Engineer"]
         let i = loopNum % toRotate.length;
         let fullText = toRotate[i];
         let updatedText = isDeleting ? (text.length === 1 ? '\u00A0' : fullText.substring(0, text.length - 1)) : (text === '\u00A0' ? fullText.substring(0,1) : fullText.substring(0, text.length + 1))
@@ -57,7 +57,7 @@ export const Banner = () => {
     }, [blinking]);
 
     return (
-    <section className="banner" id="home">
+    <section className="welcome" id="home">
         <Container>
             <Row className="align-items-center pb-5">
                 <Col className="text-start">

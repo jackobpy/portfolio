@@ -5,7 +5,7 @@ export const Footer = () => {
     return(
         <Container>
             <Row className='footer'>
-                <p>made by me in 2024</p>
+                <p>Jakub Fręchowicz 2025</p>
             </Row>
         </Container>
     )

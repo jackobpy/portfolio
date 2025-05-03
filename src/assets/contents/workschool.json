@@ -3,8 +3,8 @@
         "dates": "2023-2026",
         "title": "Delft University of Technology",
         "subtitle": "BSc Computer Science and Engineering",
-        "feature": "9.33/10.00 (GPA: 4.00)",
-        "paragraph": "I am the 9th highest scoring CS/Math student in the Netherlands with a strong academic record, completing all courses on my first attempt. I am passionate about expanding my knowledge of algorithms, machine learning, and web dev.",
+        "feature": null,
+        "paragraph": "I am the 9th highest scoring CS/Math student in the Netherland for 2023/24 with a strong academic record, completing all courses on my first attempt. I am passionate about expanding my knowledge of algorithms, machine learning, and web dev.",
         "imagepath": "/public/tudelft.png",
         "imagelink": "https://tudelft.nl/",
         "leftAligned": true
@@ -24,39 +24,49 @@
         "title": "Delft University of Technology",
         "subtitle": "Teaching Assistant",
         "feature": null,
-        "paragraph": "Recently I have started my position as a Teaching Assistant (TA) in Web and Database Technology course. As a TA, my role is to help students grasp concepts they find difficult during the lab sessions. The topics covered in the course include: introduction to databases, database design, (non-)relational database systems, SQL, web front-end and back-end development, HTML, CSS, JS, Node.js.",
+        "paragraph": "I work as a Teaching Assistant (TA) for Web and Database Technology and Information and Data Management courses. As a TA, my role is to help students grasp concepts they find difficult during the lab sessions. The topics covered in the course include: database design, (non-)relational database systems, SQL, web front-end and back-end development, and more.",
         "imagepath": "/public/tudelft.png",
         "imagelink": "https://tudelft.nl/",
-        "leftAligned": true
+        "leftAligned": false
     },
     {
         "dates": "08/2024 - 11/2024",
         "title": "Lanterna Education",
         "subtitle": "IB DP Mathematics Tutor",
         "feature": null,
-        "paragraph": "Lanterna is a leading online tutoring platform known for its rigorous hiring process, requiring strong teaching abilities and exceptional communication skills. It is through this comapny that I provided high-quality tutoring sessions in IB DP Mathematics course. Moreover, I created tailored study plans to fit each student’s personal needs, helping them acheive their academic goals.",
+        "paragraph": "Lanterna is a leading online tutoring platform known for its rigorous hiring process, requiring strong teaching abilities and exceptional communication skills. It is through this comapny that I provided high-quality tutoring sessions in IB DP Mathematics course.",
         "imagepath": "/public/lanterna.png",
         "imagelink": "https://lanterna.com/",
-        "leftAligned": false
+        "leftAligned": true
     },
     {
         "dates": "10/2024 - currently",
         "title": "PRIME - TU Delft",
         "subtitle": "Teaching Assistant",
         "feature": null,
-        "paragraph": "\"The PRogramme of Innovation in Mathematics Education (PRIME) is all about redesigning mathematics courses for engineers. As such it is part of the Interfaculty Teaching from the department of Applied Mathematics (DIAM) at TU Delft.\" It is at PRIME that I have the opportunity to contribute to improving the quality of mathematics education for engineers at TU Delft through various projects.",
+        "paragraph": "\"The PRogramme of Innovation in Mathematics Education (PRIME) is all about redesigning mathematics courses for engineers.\" It is at PRIME that I have the opportunity to contribute to improving the quality of mathematics education for engineers at TU Delft through various projects.",
         "imagepath": "/public/lanterna.png",
         "imagelink": "https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/applied-mathematics/studeren/prime",
-        "leftAligned": false
+        "leftAligned": true
     },
     {
         "dates": "10/2024 - currently",
         "title": "TeachBooks - TU Delft",
         "subtitle": "Teaching Assistant - Developer",
         "feature": null,
-        "paragraph": "At TeachBooks, I help with the development of interactive textbooks using the JupyterBook platform with features like embedded exercises, visualizations, and applets. TeachBooks simplifies the process for educators by providing templates, manuals, hosting, software tools, and community support. It is at TeachBooks where I can combine my passion for education and computer science.",
+        "paragraph": "At TeachBooks, I help with the development of interactive textbooks using the JupyterBook platform with features like embedded exercises, visualizations, and applets. It is at TeachBooks where I can combine my passion for education and computer science.",
         "imagepath": "/public/lanterna.png",
         "imagelink": "https://teachbooks.tudelft.nl",
+        "leftAligned": false
+    },
+    {
+        "dates": "04/2025 - currently",
+        "title": "Google",
+        "subtitle": "SWE Intern",
+        "feature": null,
+        "paragraph": "At Google, together with my team, we are developing an Automated Sales Enablement Program Builder, which is a web application designed to automate and centralize the creation and management of sales enablement curricula. ",
+        "imagepath": "/public/lanterna.png",
+        "imagelink": "https://google.com",
         "leftAligned": true
     }
 ]
