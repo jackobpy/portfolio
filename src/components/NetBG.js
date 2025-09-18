@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
-import { Banner } from './Banner';
+import { Background } from './Background';
 
 export const NetBG = () => {
   const [vantaEffect, setVantaEffect] = useState(0);
@@ -31,7 +31,7 @@ export const NetBG = () => {
   }, [vantaEffect]);
   return (
     <div ref={vantaRef}>
-      <Banner/>
+      <Background/>
     </div>
   );
 };

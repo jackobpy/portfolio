@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 
-export const Banner = () => {
+export const Background = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [text, setText] = useState('');
@@ -13,7 +13,7 @@ export const Banner = () => {
     const cursorElementRef = useRef(null);
 
     const tick = useCallback(() => {
-        const toRotate = ["BSc CSE Student @ TU Delft", "SWE Intern @ Google", "9th best CS/Math Student in NL for 2023/24", "Teaching Assistant", "Aspiring Software Engineer"]
+        const toRotate = ["BSc CSE Student @ TU Delft","Mobility Student @ ETH Zürich", "SWE Intern @ Google", "9th best CS/Math Student in NL for 2023/24", "Teaching Assistant"]
         let i = loopNum % toRotate.length;
         let fullText = toRotate[i];
         let updatedText = isDeleting ? (text.length === 1 ? '\u00A0' : fullText.substring(0, text.length - 1)) : (text === '\u00A0' ? fullText.substring(0,1) : fullText.substring(0, text.length + 1))

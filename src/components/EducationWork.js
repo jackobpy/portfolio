@@ -9,6 +9,7 @@ import lanterna from '../assets/img/lanterna.png';
 import prime from '../assets/img/prime.jpg';
 import teachbooks from '../assets/img/teachbooks.png';
 import google from '../assets/img/google.png';
+import ethz from '../assets/img/ethz.png';
 
 export const EducationWork = () => {
     const uni = workschool[0]
@@ -18,6 +19,7 @@ export const EducationWork = () => {
     const prm = workschool[4]
     const tb = workschool[5]
     const gg = workschool[6]
+    const eth = workschool[7]
     return(
         <div className="education-work">
             <section id="education">
@@ -26,12 +28,18 @@ export const EducationWork = () => {
                     <div className="section-header">education</div>
                     </Row>
                     <Row>
-                        <SchoolWork dates={uni.dates} title={uni.title} subtitle={uni.subtitle} feature={uni.feature} paragraph={uni.paragraph} imagepath={tudelft} imagelink={uni.imagelink} leftAligned={uni.leftAligned}/>
+                        <SchoolWork dates={eth.dates} title={eth.title} subtitle={eth.subtitle} feature={eth.feature} paragraph={eth.paragraph} imagepath={ethz} imagelink={eth.imagelink} leftAligned={eth.leftAligned}/>
                     </Row>
                     <Row className="d-flex justify-content-center">
                         <Image src={stroke1} style={{width: '500px'}}  className='stroke'/>
                     </Row>
                     <Row className="d-flex justify-content-end">
+                        <SchoolWork dates={uni.dates} title={uni.title} subtitle={uni.subtitle} feature={uni.feature} paragraph={uni.paragraph} imagepath={tudelft} imagelink={uni.imagelink} leftAligned={uni.leftAligned}/>
+                    </Row>
+                    <Row className="d-flex justify-content-center">
+                        <Image src={stroke2} style={{width: '500px'}}  className='stroke flipped'/>
+                    </Row>
+                    <Row>
                         <SchoolWork dates={hs.dates} title={hs.title} subtitle={hs.subtitle} feature={hs.feature} paragraph={hs.paragraph} imagepath={staszic} imagelink={hs.imagelink} leftAligned={hs.leftAligned}/>
                     </Row>
                 </Container>

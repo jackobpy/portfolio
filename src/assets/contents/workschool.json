@@ -1,23 +1,23 @@
 [
     {
-        "dates": "2023-2026",
+        "dates": "2023 - 2026",
         "title": "Delft University of Technology",
         "subtitle": "BSc Computer Science and Engineering",
         "feature": null,
         "paragraph": "I am the 9th highest scoring CS/Math student in the Netherland for 2023/24 with a strong academic record, completing all courses on my first attempt. I am passionate about expanding my knowledge of algorithms, machine learning, and web dev.",
         "imagepath": "/public/tudelft.png",
         "imagelink": "https://tudelft.nl/",
-        "leftAligned": true
+        "leftAligned": false
     },
     {
-        "dates": "2019-2023",
+        "dates": "2019 - 2023",
         "title": "Staszic High School in Lublin",
         "subtitle": "International Baccalaureate DP",
         "feature": "44/45 points (EE: A, TOK: A)",
         "paragraph": "I graduated high school as the valedictorian, which was an incredible honor. During my time there I also placed 4th in the team competition at International Mathematics Olympiad ISMTF. Additionally, I received the Prime Minister's Scholarship in recognition of the outstanding academic performance throughout high school.",
         "imagepath": "/public/staszic.png",
         "imagelink": "https://lo1.lublin.pl/",
-        "leftAligned": false
+        "leftAligned": true
     },
     {
         "dates": "11/2024 - currently",
@@ -50,7 +50,7 @@
         "leftAligned": true
     },
     {
-        "dates": "10/2024 - currently",
+        "dates": "10/2024 - 02/2025",
         "title": "TeachBooks - TU Delft",
         "subtitle": "Teaching Assistant - Developer",
         "feature": null,
@@ -60,13 +60,23 @@
         "leftAligned": false
     },
     {
-        "dates": "04/2025 - currently",
+        "dates": "04/2025 - 06/2025",
         "title": "Google",
         "subtitle": "SWE Intern",
         "feature": null,
         "paragraph": "At Google, together with my team, we are developing an Automated Sales Enablement Program Builder, which is a web application designed to automate and centralize the creation and management of sales enablement curricula. ",
         "imagepath": "/public/lanterna.png",
         "imagelink": "https://google.com",
+        "leftAligned": true
+    },
+    {
+        "dates": "09/2025 - 02/2026",
+        "title": "ETH Zürich",
+        "subtitle": "Mobility Student",
+        "feature": null,
+        "paragraph": "I am currently spending my semester abroad at ETH Zürich, where I am taking courses such as Probabilistic Artificial Intelligence, Network Security, and others. This experience allows me to broaden my academic horizons and immerse myself in a new cultural environment.",
+        "imagepath": "/public/ethz.png",
+        "imagelink": "https://ethz.ch/",
         "leftAligned": true
     }
 ]
