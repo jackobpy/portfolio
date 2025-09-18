@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6f9f4b94.css",
-    "main.js": "/static/js/main.d185d8a0.js",
+    "main.js": "/static/js/main.3cb34162.js",
     "static/media/website.png": "/static/media/website.6c3dbcc7e4cd6653be53.png",
     "static/media/sphinxtudelfttheme.png": "/static/media/sphinxtudelfttheme.92c277592282d64fac1c.png",
     "static/media/splitty.png": "/static/media/splitty.1a0ea2c4daa31a928b7f.png",
@@ -31,10 +31,10 @@
     "index.html": "/index.html",
     "static/media/bg.svg": "/static/media/bg.e424a0ac03b2b111531a.svg",
     "main.6f9f4b94.css.map": "/static/css/main.6f9f4b94.css.map",
-    "main.d185d8a0.js.map": "/static/js/main.d185d8a0.js.map"
+    "main.3cb34162.js.map": "/static/js/main.3cb34162.js.map"
   },
   "entrypoints": [
     "static/css/main.6f9f4b94.css",
-    "static/js/main.d185d8a0.js"
+    "static/js/main.3cb34162.js"
   ]
 }
