@@ -1,0 +1,32 @@
+---
+import { href, period, labels, type Entry } from "../lib/content";
+interface Props {
+  entry: Entry;
+  showType?: boolean;
+}
+const { entry: e, showType = true } = Astro.props;
+---
+
+<a class="row" href={href(e)}
+  ><div class="period meta">
+    {
+      "publishedAt" in e.data
+        ? e.data.publishedAt.toLocaleDateString("en", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            timeZone: "UTC",
+          })
+        : period(e)
+    }{
+      showType && (
+        <div class="row-label">
+          {e.data.sample ? "Sample · " : ""}
+          {labels[e.collection]}
+        </div>
+      )
+    }
+  </div><div>
+    <h3>{e.data.title}</h3><p>{e.data.role ?? e.data.summary}</p>
+  </div><span class="row-arrow" aria-hidden="true">↗</span></a
+>

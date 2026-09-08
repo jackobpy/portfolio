@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentRow from "../components/ContentRow.astro";
+import { entries, labels, type Kind } from "../lib/content";
+export function getStaticPaths() {
+  return ["work", "projects", "experience", "education", "writing"].map(
+    (section) => ({ params: { section } }),
+  );
+}
+const section = Astro.params.section!;
+const meta: Record<string, [string, string]> = {
+  work: [
+    "Work",
+    "Projects, professional experience, and the education behind them.",
+  ],
+  projects: ["Projects", "Software, research, and visual explanations."],
+  experience: [
+    "Experience",
+    "Building useful software and helping others understand the ideas behind it.",
+  ],
+  education: [
+    "Education",
+    "A foundation in computer science, mathematics, and intelligent systems.",
+  ],
+  writing: [
+    "Writing",
+    "Research notes, project reflections, and technical ideas.",
+  ],
+};
+const [title, description] = meta[section];
+const groups: Kind[] =
+  section === "work"
+    ? ["projects", "experience", "education"]
+    : [section as Kind];
+const data = await Promise.all(
+  groups.map(async (kind) => ({ kind, items: await entries(kind) })),
+);
+---
+
+<BaseLayout title={title} description={description}
+  ><header class="page-heading">
+    <div class="meta">
+      {section === "writing" ? "Notes & articles" : "A connected body of work"}
+    </div><h1>{title}</h1><p>{description}</p>
+  </header>{
+    section !== "writing" && (
+      <nav class="index-nav" aria-label="Work categories">
+        {["work", "projects", "experience", "education"].map((s) => (
+          <a href={`/${s}`} aria-current={s === section ? "page" : undefined}>
+            {s === "work" ? "All work" : s[0].toUpperCase() + s.slice(1)}
+          </a>
+        ))}
+      </nav>
+    )
+  }<div class="page-content">
+    {
+      section === "writing" &&
+        data.some((g) => g.items.some((e) => e.data.sample)) && (
+          <p class="notice">
+            The entries below are clearly labelled sample templates. Original
+            posts will appear here when published.
+          </p>
+        )
+    }{
+      data.map(({ kind, items }) => (
+        <section class="section">
+          {section === "work" && (
+            <div class="section-head">
+              <h2>{kind[0].toUpperCase() + kind.slice(1)}</h2>
+              <span class="meta">
+                {String(items.length).padStart(2, "0")} entries
+              </span>
+            </div>
+          )}
+          {items.map((entry) => (
+            <ContentRow
+              entry={entry}
+              showType={section === "work" || kind === "writing"}
+            />
+          ))}
+          {!items.length && (
+            <p class="muted">
+              No {labels[kind].toLowerCase()} entries published yet.
+            </p>
+          )}
+        </section>
+      ))
+    }
+  </div></BaseLayout
+>

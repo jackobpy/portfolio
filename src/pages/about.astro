@@ -1,0 +1,33 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile } from "../lib/profile";
+const entry = await getEntry("pages", "about");
+if (!entry) throw new Error("Missing about page");
+const { Content } = await render(entry);
+---
+
+<BaseLayout title="About" description={entry.data.summary}
+  ><header class="page-heading">
+    <div class="meta">A little more context</div><h1>About me.</h1><p>
+      {entry.data.summary}
+    </p>
+  </header><div class="detail-grid">
+    <aside class="detail-meta">
+      <dl>
+        <div><dt class="meta">Based in</dt><dd>{profile.location}</dd></div><div
+        >
+          <dt class="meta">Contact</dt><dd>
+            <a href={`mailto:${profile.email}`}>Email ↗</a>
+          </dd><dd><a href={profile.linkedin}>LinkedIn ↗</a></dd>
+        </div><div>
+          <dt class="meta">Languages</dt>{
+            profile.languages.map((l) => <dd>{l}</dd>)
+          }
+        </div>
+      </dl>
+    </aside><article class="prose">
+      <Content /><p><a href="/cv">View my CV ↗</a></p>
+    </article>
+  </div></BaseLayout
+>

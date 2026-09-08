@@ -1,0 +1,158 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContentRow from "../../components/ContentRow.astro";
+import {
+  graph,
+  related,
+  period,
+  labels,
+  readingTime,
+  type Entry,
+} from "../../lib/content";
+export async function getStaticPaths() {
+  return (await graph()).map((entry) => ({
+    params: { section: entry.collection, slug: entry.id },
+    props: { entry },
+  }));
+}
+interface Props {
+  entry: Entry;
+}
+const { entry: e } = Astro.props;
+const { Content } = await render(e);
+const linked = await related(e);
+const article =
+  e.collection === "writing"
+    ? { publishedAt: e.data.publishedAt, updatedAt: e.data.updatedAt }
+    : undefined;
+---
+
+<BaseLayout
+  title={e.data.title}
+  description={e.data.summary}
+  article={article}
+  noindex={e.data.sample}
+  ><header class="page-heading">
+    <div class="meta">
+      <a href={`/${e.collection}`}>{labels[e.collection]}</a> / {
+        e.data.sample ? "Sample template" : (e.data.status ?? "Selected work")
+      }
+    </div><h1>{e.data.title}</h1><p>{e.data.summary}</p>
+  </header>{
+    e.data.sample && (
+      <aside class="notice">
+        Sample content — this demonstrates the writing template and is not a
+        publication or achievement by Jakub.
+      </aside>
+    )
+  }<div class="detail-grid">
+    <aside class="detail-meta" aria-label="Entry details">
+      <dl>
+        {
+          article ? (
+            <>
+              <div>
+                <>
+                  <dt class="meta">Published</dt>
+                  <dd>
+                    <time datetime={article.publishedAt.toISOString()}>
+                      {article.publishedAt.toLocaleDateString("en", {
+                        dateStyle: "long",
+                        timeZone: "UTC",
+                      })}
+                    </time>
+                  </dd>
+                </>
+              </div>
+              {article.updatedAt && (
+                <div>
+                  <dt class="meta">Updated</dt>
+                  <dd>
+                    {article.updatedAt.toLocaleDateString("en", {
+                      dateStyle: "long",
+                      timeZone: "UTC",
+                    })}
+                  </dd>
+                </div>
+              )}
+              <div>
+                <>
+                  <dt class="meta">Reading time</dt>
+                  <dd>{readingTime(e)} min</dd>
+                </>
+              </div>
+            </>
+          ) : (
+            (e.data.dateStart || e.data.dateEnd) && (
+              <div>
+                <>
+                  <dt class="meta">Period</dt>
+                  <dd>{period(e)}</dd>
+                </>
+              </div>
+            )
+          )
+        }{
+          e.data.role && (
+            <div>
+              <>
+                <dt class="meta">Role / programme</dt>
+                <dd>{e.data.role}</dd>
+              </>
+            </div>
+          )
+        }{
+          e.data.location && (
+            <div>
+              <>
+                <dt class="meta">Location</dt>
+                <dd>{e.data.location}</dd>
+              </>
+            </div>
+          )
+        }{
+          e.data.grade && (
+            <div>
+              <>
+                <dt class="meta">Academic result</dt>
+                <dd>{e.data.grade}</dd>
+              </>
+            </div>
+          )
+        }{
+          !!e.data.technologies.length && (
+            <div>
+              <>
+                <dt class="meta">Technologies</dt>
+                <dd>{e.data.technologies.join(", ")}</dd>
+              </>
+            </div>
+          )
+        }
+      </dl><div class="tags">
+        {e.data.tags.map((t) => <span class="tag">{t}</span>)}
+      </div>{
+        e.data.links.map((l) => (
+          <p style="margin-top:20px">
+            <a href={l.url}>{l.label} ↗</a>
+          </p>
+        ))
+      }
+    </aside><article class="prose"><Content /></article>
+  </div>{
+    !!linked.length && (
+      <section class="related">
+        <div class="section-head">
+          <>
+            <h2>Connected work</h2>
+            <span class="meta">Follow the connections</span>
+          </>
+        </div>
+        {linked.map((entry) => (
+          <ContentRow entry={entry} />
+        ))}
+      </section>
+    )
+  }</BaseLayout
+>

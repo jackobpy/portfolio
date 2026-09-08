@@ -1,0 +1,18 @@
+---
+import { href, type Entry } from "../lib/content";
+import ProjectArt from "./ProjectArt.astro";
+interface Props {
+  entry: Entry;
+}
+const { entry: e } = Astro.props;
+---
+
+<article class="project">
+  <a href={href(e)}
+    ><div class="project-art"><ProjectArt kind={e.data.art} /></div><h3>
+      {e.data.title}<span aria-hidden="true">↗</span>
+    </h3></a
+  ><p>{e.data.summary}</p><div class="tags">
+    {e.data.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+</article>

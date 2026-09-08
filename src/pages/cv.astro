@@ -1,0 +1,238 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { entries, href, period, type Kind } from "../lib/content";
+import { profile } from "../lib/profile";
+const groups = await Promise.all(
+  (["education", "experience", "projects"] as Kind[]).map(async (kind) => ({
+    kind,
+    items: (await entries(kind))
+      .filter((e) => e.data.cv.show)
+      .sort((a, b) => a.data.cv.priority - b.data.cv.priority),
+  })),
+);
+---
+
+<BaseLayout
+  title="CV"
+  description="Education, experience, and selected work of Jakub Fręchowicz."
+  ><div class="cv-actions screen-only">
+    <span class="meta">Curriculum vitae</span><button
+      class="button"
+      id="print-cv">Print / Save PDF <span aria-hidden="true">↗</span></button
+    >
+  </div><article class="cv">
+    <header class="cv-heading">
+      <h1>{profile.name}</h1><p>
+        Computer scientist · Software engineering & intelligent systems
+      </p><div class="cv-contact">
+        <span>{profile.location}</span><a href={`mailto:${profile.email}`}
+          >{profile.email}</a
+        ><a href={profile.linkedin}>linkedin.com/in/jakubfrechowicz</a><a
+          href="https://frechowicz.com">frechowicz.com</a
+        >
+      </div>
+    </header>{
+      groups
+        .filter((g) => g.items.length)
+        .map(({ kind, items }) => (
+          <section class="cv-section">
+            <h2>{kind}</h2>
+            {items.map((e) => (
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <h3>
+                    <a href={href(e)}>
+                      {e.data.title}
+                      <span class="screen-only cv-arrow"> ↗</span>
+                    </a>
+                  </h3>
+                  <span class="cv-date">{period(e)}</span>
+                </div>
+                {e.data.role && <p class="cv-role">{e.data.role}</p>}
+                <ul>
+                  {e.data.cv.summary.map((b) => (
+                    <li>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        ))
+    }<section class="cv-section cv-small">
+      <h2>Languages</h2><p>{profile.languages.join(" · ")}</p>
+    </section><section class="cv-section cv-small">
+      <h2>Selected recognition</h2><p>{profile.awards.join(" · ")}</p>
+    </section>
+  </article></BaseLayout
+>
+<script>
+  document
+    .getElementById("print-cv")
+    ?.addEventListener("click", () => window.print());
+</script>
+<style>
+  .cv-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+  }
+  .cv {
+    max-width: 850px;
+    margin: 0 auto 65px;
+    padding: 48px 55px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+  .cv-heading {
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 23px;
+  }
+  .cv-heading h1 {
+    font-size: 35px;
+  }
+  .cv-heading p {
+    margin: 10px 0;
+    color: var(--color-text-muted);
+  }
+  .cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 18px;
+    font-size: 12px;
+  }
+  .cv-section {
+    margin-top: 27px;
+  }
+  .cv-section h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font: 12px var(--font-mono);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+  .cv-entry {
+    margin-bottom: 20px;
+    break-inside: avoid;
+  }
+  .cv-entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .cv-entry-head h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  .cv-date {
+    font: 11px var(--font-mono);
+    white-space: nowrap;
+    color: var(--color-text-muted);
+  }
+  .cv-role {
+    margin: 3px 0 5px;
+  }
+  .cv-entry ul {
+    margin: 5px 0;
+    padding-left: 17px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .cv-arrow {
+    color: var(--color-text-muted);
+    font-size: 12px;
+  }
+  .cv-small p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  @media (max-width: 700px) {
+    .cv {
+      padding: 28px 22px;
+    }
+    .cv-entry-head {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cv-heading h1 {
+      font-size: 29px;
+    }
+    .cv-contact {
+      flex-direction: column;
+    }
+    .cv-actions {
+      gap: 12px;
+    }
+  }
+  @media print {
+    .cv {
+      max-width: none;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      font-size: 10pt;
+    }
+    .cv-heading {
+      padding-bottom: 5mm;
+    }
+    .cv-heading h1 {
+      font-size: 25pt;
+    }
+    .cv-heading p {
+      font-size: 10pt;
+    }
+    .cv-contact {
+      font-size: 8.5pt;
+      display: flex;
+      flex-direction: row;
+      gap: 1mm 4mm;
+    }
+    .cv-section {
+      margin-top: 6mm;
+    }
+    .cv-section h2 {
+      font-size: 9pt;
+      padding-bottom: 2mm;
+      margin-bottom: 3mm;
+      break-after: avoid;
+    }
+    .cv-entry {
+      margin-bottom: 4mm;
+      break-inside: avoid;
+    }
+    .cv-entry-head {
+      display: flex;
+      flex-direction: row;
+      gap: 4mm;
+    }
+    .cv-entry-head h3 {
+      font-size: 11pt;
+    }
+    .cv-date {
+      font-size: 8pt;
+      color: #444;
+    }
+    .cv-role {
+      font-size: 9.5pt;
+    }
+    .cv-entry ul {
+      font-size: 9pt;
+      line-height: 1.45;
+      margin-top: 1mm;
+    }
+    .cv-small p {
+      font-size: 9pt;
+    }
+    .cv a {
+      color: #111;
+    }
+    .cv-section:first-of-type {
+      break-inside: avoid;
+    }
+  }
+</style>
