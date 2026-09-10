@@ -5,7 +5,7 @@ export async function GET() {
   return rss({
     title: "Jakub Fręchowicz — Writing",
     description: "Notes on computer science and intelligent systems.",
-    site: "https://frechowicz.com",
+    site: "https://jakubfrechowicz.com",
     items: posts.map((e) => ({
       title: e.data.sample ? `[Sample] ${e.data.title}` : e.data.title,
       description: e.data.summary,

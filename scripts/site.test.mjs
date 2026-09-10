@@ -19,7 +19,7 @@ test("public routes build and every page has one h1 and canonical metadata", asy
   for (const f of html) {
     const s = await readFile(f, "utf8");
     assert.equal((s.match(/<h1(?:\s|>)/g) || []).length, 1, f);
-    assert.match(s, /<link rel="canonical" href="https:\/\/frechowicz.com/);
+    assert.match(s, /<link rel="canonical" href="https:\/\/jakubfrechowicz.com/);
     assert.match(s, /<meta name="description"/);
   }
 });

@@ -1,10 +1,10 @@
-# frechowicz.com
+# jakubfrechowicz.com
 
 Jakub Fręchowicz’s personal website. Static HTML from Astro, typed content collections, MDX, and a progressively loaded Three.js illustration. No framework hydration, database, CMS, analytics, or external font requests.
 
 ## Run locally
 
-Use Node 22.12+ and pnpm 11.19 (the lockfile and build approvals are included).
+Use Node 22.12+ and pnpm 12.3.4 (the lockfile is included).
 
 ```sh
 pnpm install
@@ -85,7 +85,7 @@ relatedProjects: [single-cell-representations]
 Write in Markdown. MDX also supports imports and custom Astro components.
 ```
 
-Types are `article`, `note`, and `project-log`. Optional `updatedAt` is displayed on the article. Change `draft` to `false`, commit, and push; a connected Cloudflare Pages project rebuilds automatically. No index edits are required. Drafts are excluded even in development to keep the behaviour predictable. Images can live in `src/assets/projects/<slug>/`; import them into MDX and use Astro’s `Image` with meaningful alt text and explicit dimensions. Markdown tables, code blocks, lists, and blockquotes are styled. Math rendering and search are intentionally deferred.
+Types are `article`, `note`, and `project-log`. Optional `updatedAt` is displayed on the article. Change `draft` to `false`, commit, and push; GitHub Actions rebuilds and deploys the site automatically. No index edits are required. Drafts are excluded even in development to keep the behaviour predictable. Images can live in `src/assets/projects/<slug>/`; import them into MDX and use Astro’s `Image` with meaningful alt text and explicit dimensions. Markdown tables, code blocks, lists, and blockquotes are styled. Math rendering and search are intentionally deferred.
 
 Three published sample posts demonstrate the templates and one draft demonstrates exclusion. Samples have `sample: true`, conspicuous labels, and noindex metadata. They are omitted from the homepage’s latest posts. Delete them or replace their bodies and remove `sample` before launching the public personal domain. The Writing index notice disappears when no samples remain.
 
@@ -109,25 +109,18 @@ PDF generation is not a build dependency. There is no fake download link. Browse
 
 ## Styling and metadata
 
-Edit CSS custom properties in `src/styles/tokens.css`. The system font stack avoids external requests. Indexes use the wider editorial measure and prose uses a narrower one. A minimal navigation stays visible on mobile without a menu script. Metadata uses `https://frechowicz.com` as canonical; RSS is `/rss.xml`, and Astro generates the sitemap. Default social artwork is `public/og-default.png`; replace it with another 1200×630 PNG while preserving the URL. SVG favicon and Apple touch icon are included.
+Edit CSS custom properties in `src/styles/tokens.css`. The system font stack avoids external requests. Indexes use the wider editorial measure and prose uses a narrower one. A minimal navigation stays visible on mobile without a menu script. Metadata uses `https://jakubfrechowicz.com` as canonical; RSS is `/rss.xml`, and Astro generates the sitemap. Default social artwork is `public/og-default.png`; replace it with another 1200×630 PNG while preserving the URL. SVG favicon and Apple touch icon are included.
 
 ## Deployment
 
 The repository builds independently into **`dist/`**.
 
-### Cloudflare Pages (intended public hosting)
+### GitHub Pages
 
-Push this repository to GitHub, create a Pages project connected to that repository, and set:
+Pushes to `main` run `.github/workflows/deploy.yml`. The workflow installs dependencies with pnpm, checks and builds the Astro project, tests the generated output, and deploys `dist/` through GitHub Pages.
 
-- Build command: `pnpm build`
-- Output directory: `dist`
-- Node version: 22.12 or newer
-- Install: `pnpm install --frozen-lockfile`
-
-No Cloudflare adapter, runtime binding, or server is necessary. Configure `frechowicz.com` as the custom domain in Pages. Domain/DNS changes are not made by this project. The in-app Sites preview is separate; `.openai/hosting.json` points to the private preview’s static output.
-
-For `jakubfrechowicz.com`, configure a Cloudflare redirect rule matching that hostname and redirect with HTTP **301**, preserving the original path and query string. Its DNS must route through Cloudflare for the redirect rule to apply. Do not serve two indexable copies. Validate, for example, that `/cv?ref=test` redirects to `https://frechowicz.com/cv?ref=test`.
+In the repository's **Settings → Pages**, choose **GitHub Actions** as the source and set `jakubfrechowicz.com` as the custom domain. The existing Squarespace DNS records can remain unchanged while replacing the previous site in the same repository.
 
 ### Other static hosts
 
-Upload `dist/` to any static host supporting directory indexes and a custom 404 page. For GitHub Pages at a custom domain, add the matching `CNAME` configuration; a repository-subpath deployment requires updating Astro’s `base` and root-relative links. Do not claim the personal domains are live until their hosting and DNS setup is complete.
+Upload `dist/` to any static host supporting directory indexes and a custom 404 page. A repository-subpath deployment requires updating Astro’s `base` and root-relative links.

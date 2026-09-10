@@ -1,23 +1,67 @@
 ---
-title: "Learning cellular representations"
-summary: "Exploring variational autoencoders for high-dimensional single-cell genomics in my bachelor’s thesis."
+title: "Multi-omic representations at single-cell resolution"
+summary: "My bachelor’s thesis on extending an interpretable variational model to learn from paired RNA and protein measurements."
 dateEnd: "2026-06"
 status: "completed"
-tags: ["Machine learning", "Representation learning"]
+tags: ["Machine learning", "Computational biology", "Representation learning"]
+technologies: ["Python", "PyTorch"]
+role: "Bachelor thesis, Computer Science and Engineering"
+grade: "9.5 / 10"
+links:
+  - label: "Read the thesis"
+    url: "https://repository.tudelft.nl/record/uuid:760101eb-50ab-4748-a81f-b93657f293b2"
+  - label: "View the research poster"
+    url: "https://cse3000-research-project.github.io/static/0e71aaabe9098f86c3777da62b738efd/poster.pdf"
 featured: true
 featuredOrder: 2
 art: "latent"
 relatedEducation: ["tu-delft"]
 ---
 
-## Research context
+import ProjectRepository from "../../components/ProjectRepository.astro";
 
-Single-cell genomics produces high-dimensional data. My bachelor’s thesis studied representation learning in this setting using variational autoencoders (VAEs).
+## The research question
 
-## Research direction
+Single-cell RNA sequencing measures the activity of thousands of genes in individual cells. It offers an unusually detailed view of biological processes, but the resulting data is vast, sparse, and difficult to interpret. One important downstream task is finding **expression quantitative trait loci (eQTLs)**: genetic variants associated with changes in gene expression. Trans-eQTLs are especially challenging because their effects are weaker and may occur far from the affected gene.
 
-The project focused on learning representations of high-dimensional single-cell genomic data.
+The starting point for my thesis was **Latent Interaction Variational Inference (LIVI)**. LIVI compresses gene-expression data into interpretable representations of cell state, persistent donor effects, and interactions between the two. Its donor factors can then be used as phenotypes for association testing, reducing the number of comparisons needed to search for trans-eQTLs.
 
-## Further detail
+LIVI only models RNA. CITE-seq, however, measures RNA and surface-protein counts in the same cell. My research asked whether adding this complementary protein information could produce more biologically informative representations without losing LIVI’s separation of cell-state and donor effects.
 
-The thesis abstract, experimental setup, and results have not yet been added. The TU Delft transcript records a Research Project grade of 9.5/10.
+## Two extensions to LIVI
+
+I designed and implemented two multimodal variational models:
+
+- **MultiSLIVI** is the conservative extension. RNA and protein measurements pass through one encoder into a shared cell-state representation, while separate linear decoders reconstruct each modality.
+- **DMLIVI** separates the representation into a shared component and RNA- and protein-specific components. A product-of-experts combines the shared estimates, while alignment and correlation penalties encourage shared and modality-specific information to remain distinct.
+
+<ProjectRepository
+  owner="jackobpy"
+  name="MultiLIVI"
+  url="https://github.com/jackobpy/MultiLIVI"
+  description="Multimodal extensions of LIVI for learning from paired RNA and protein measurements."
+/>
+
+Both models preserve LIVI’s interpretable linear decoders and its explicit modelling of cell-state, donor, and donor–cell-state interaction. This made it possible to study the effect of multimodal learning without discarding the structure that makes LIVI useful for genetic association testing.
+
+## Evaluation
+
+I evaluated the models on paired RNA and surface-protein measurements from more than **300,000 cells** in rheumatoid arthritis tissue: 85 donors, 17,049 genes, and 58 proteins. I compared three protein-loss weightings for each architecture against the RNA-only LIVI baseline.
+
+The evaluation looked beyond reconstruction error. I inspected the geometry of the latent spaces with UMAP, trained classifiers to measure cell-type, cell-subtype, and donor information, and used the learned donor factors in downstream SNP association testing.
+
+## What the experiments showed
+
+Both multimodal models learned to reconstruct protein counts, but the additional objective came at a cost to RNA reconstruction. DMLIVI handled that trade-off substantially better than MultiSLIVI: at its lowest protein weighting, its RNA reconstruction stayed close to the original LIVI baseline while achieving stronger protein reconstruction.
+
+The biological structure was largely retained. Every model achieved more than 97% accuracy on major cell-type prediction, and the multimodal models slightly improved several protein-informed B-cell subtype predictions. DMLIVI’s full representation also kept cell-type clusters clearer than its shared component alone, suggesting that modality-specific embeddings captured useful cellular information.
+
+The decisive result came from downstream association testing. The original LIVI model recovered 677 significant SNP–donor-factor associations, while the strongest multimodal configuration recovered 449; performance declined further as protein weighting increased. The classifiers also showed more donor information leaking into the multimodal cell-state representations.
+
+This negative result was the central finding: adding another biological modality did not automatically create a better phenotype for genetic association testing. Protein measurements introduced useful information, but also modality-specific and donor-related variation that the model needed to separate more carefully.
+
+## Takeaway
+
+DMLIVI demonstrated that explicitly separating shared and modality-specific signals gives a better multimodal reconstruction balance. At the same time, the original LIVI remained the strongest model for the downstream task that mattered most. A future extension should isolate shared, modality-specific, and donor-related variation more rigorously—and reconsider whether modality-specific information should contribute directly to the cell-state–donor interaction.
+
+The thesis received a **9.5 / 10**. More importantly, it gave a clear answer to the research question and turned an apparent underperformance into a concrete architectural direction for future work.
