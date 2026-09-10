@@ -9,7 +9,7 @@ export function mountScene(host: HTMLElement, onContextLost?: () => void) {
     powerPreference: "low-power",
   });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-  renderer.setClearColor(0xfafbf9, 1);
+  renderer.setClearColor(0x000000, 0);
   host.appendChild(renderer.domElement);
   renderer.domElement.setAttribute(
     "aria-label",
@@ -17,7 +17,6 @@ export function mountScene(host: HTMLElement, onContextLost?: () => void) {
   );
   renderer.domElement.style.cursor = "pointer";
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xfafbf9);
   const camera = new THREE.OrthographicCamera(-9, 9, 6, -6, 0.1, 100);
   camera.position.set(11, 12, 14);
   camera.lookAt(0, 0, 0);
