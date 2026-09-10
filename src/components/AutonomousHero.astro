@@ -4,7 +4,7 @@
 >
   <div class="scene-top meta">
     <span><span class="dot"></span>Autonomous systems</span><span
-      >01 / Motion planning</span
+      >Motion planning</span
     >
   </div><div id="vehicle-scene">
     <div class="scene-fallback">
@@ -15,28 +15,34 @@
       >
         <path
           d="M-20 263C150 253 179 70 520 98"
-          stroke="#b7c7be"
+          stroke="var(--color-border)"
           stroke-width="40"
           fill="none"></path>
         <path
           d="M-20 263C150 253 179 70 520 98"
-          stroke="#fafbf9"
+          stroke="var(--color-background)"
           stroke-width="38"
           fill="none"></path>
         <path
           data-route
           d="M-20 263C150 253 179 70 520 98"
-          stroke="#176b61"
+          stroke="var(--color-accent)"
           stroke-width="2"
           stroke-dasharray="5 7"
           fill="none"></path>
         <g data-car transform="translate(228 157) rotate(-28)">
           <path d="M0 -20V20" stroke="#6a9884" stroke-width="1.5"></path>
-          <circle cy="-20" r="2.5" fill="#176b61"></circle><circle
+          <circle cy="-20" r="2.5" fill="var(--color-accent)"></circle><circle
             cy="20"
             r="2.5"
-            fill="#176b61"></circle>
-          <rect x="-13" y="-8" width="26" height="16" rx="4" fill="#176b61"
+            fill="var(--color-accent)"></circle>
+          <rect
+            x="-13"
+            y="-8"
+            width="26"
+            height="16"
+            rx="4"
+            fill="var(--color-accent)"
           ></rect>
           <rect x="2" y="-6" width="5" height="12" rx="1" fill="#c4cec7"></rect>
           <circle r="3" fill="#9cebc9"></circle>
@@ -46,7 +52,7 @@
     <aside class="scene-telemetry" aria-label="Simulated lane sensor readings">
       <div class="telemetry-heading">
         <span><span class="telemetry-pulse"></span>Lane sensors</span><span
-          id="scene-mode">STATIC</span
+          id="scene-mode">Static</span
         >
       </div>
       <div class="telemetry-row">
@@ -105,7 +111,7 @@
   .scene-fallback {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, #c4d0c8 0.6px, transparent 1px);
+    background: radial-gradient(circle, #c7ded2 0.6px, transparent 1px);
     background-size: 20px 20px;
   }
   .scene-fallback svg {
@@ -119,8 +125,9 @@
     right: 16px;
     width: 150px;
     padding: 10px 11px;
-    border: 1px solid rgba(23, 107, 97, 0.18);
-    background: rgba(250, 251, 249, 0.9);
+    border: 1px solid rgba(0, 127, 82, 0.22);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.92);
     color: var(--color-text-muted);
     font: 9px var(--font-mono);
     letter-spacing: 0.04em;
@@ -141,7 +148,6 @@
     color: var(--color-accent);
     font-size: 8px;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
   .telemetry-pulse {
     display: inline-block;
@@ -187,7 +193,6 @@
     background: none;
     color: var(--color-text-muted);
     font: inherit;
-    text-transform: uppercase;
     letter-spacing: inherit;
   }
   button:hover {
@@ -253,7 +258,7 @@
           mountScene(host, () => {
             stopFallback = mountFallback(host);
           });
-          document.getElementById("scene-mode")!.textContent = "SIM";
+          document.getElementById("scene-mode")!.textContent = "Simulation";
         } catch {
           host.querySelector("canvas")?.remove();
           stopFallback();

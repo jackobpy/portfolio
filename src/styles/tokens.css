@@ -1,11 +1,11 @@
 :root {
-  --color-background: #fafbf9;
-  --color-surface: #f0f3f1;
-  --color-text: #252d2b;
-  --color-text-muted: #606c68;
-  --color-border: #d9dfdb;
-  --color-accent: #176b61;
-  --color-accent-subtle: #e7f0ed;
+  --color-background: #ffffff;
+  --color-surface: #f3faf6;
+  --color-text: #17231f;
+  --color-text-muted: #586760;
+  --color-border: #d9e5de;
+  --color-accent: #007f52;
+  --color-accent-subtle: #e4f7ed;
   --font-body: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --width: 1160px;

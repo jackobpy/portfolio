@@ -36,7 +36,7 @@ const groups = await Promise.all(
         .filter((g) => g.items.length)
         .map(({ kind, items }) => (
           <section class="cv-section">
-            <h2>{kind}</h2>
+            <h2>{kind[0].toUpperCase() + kind.slice(1)}</h2>
             {items.map((e) => (
               <div class="cv-entry">
                 <div class="cv-entry-head">
@@ -106,9 +106,9 @@ const groups = await Promise.all(
     margin-top: 27px;
   }
   .cv-section h2 {
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font: 12px var(--font-mono);
+    letter-spacing: -0.02em;
+    font: 600 15px var(--font-body);
+    color: var(--color-accent);
     border-bottom: 1px solid var(--color-border);
     padding-bottom: 8px;
     margin-bottom: 18px;
