@@ -1,0 +1,105 @@
+---
+const bands = [
+  { label: "Below 6", value: 0 },
+  { label: "6 to < 7", value: 2.5 },
+  { label: "7 to < 8", value: 59 },
+  { label: "8 to < 9", value: 33.5 },
+  { label: "9 to 10", value: 5, highlighted: true },
+];
+---
+
+<figure class="gpa-distribution">
+  <div class="gpa-chart" aria-label="Distribution of TU Delft Computer Science and Engineering GPAs over the preceding three years">
+    {
+      bands.map((band) => (
+        <div class:list={["gpa-band", { highlighted: band.highlighted }]}>
+          <div class="gpa-value">{band.value.toFixed(1)}%</div>
+          <div class="gpa-track" aria-hidden="true">
+            <div class="gpa-bar" style={`--value: ${band.value}`} />
+          </div>
+          <div class="gpa-label">{band.label}</div>
+        </div>
+      ))
+    }
+  </div>
+  <figcaption>
+    Share of GPA results by range. The highlighted band contains my 9.12 GPA.
+  </figcaption>
+</figure>
+
+<style>
+  .gpa-distribution {
+    margin: 1.8rem 0 2rem;
+  }
+  .gpa-chart {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(70px, 1fr));
+    gap: 12px;
+    height: 250px;
+    align-items: end;
+    padding: 22px 18px 16px;
+    border: 1px solid var(--color-border);
+    background:
+      linear-gradient(to top, var(--color-border) 1px, transparent 1px) 0 0 / 100% 25%,
+      var(--color-surface);
+  }
+  .gpa-band {
+    display: grid;
+    grid-template-rows: 26px 160px auto;
+    gap: 7px;
+    min-width: 0;
+    text-align: center;
+  }
+  .gpa-value {
+    font: 12px/1.5 var(--font-mono);
+    color: var(--color-text-muted);
+  }
+  .gpa-track {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 160px;
+  }
+  .gpa-bar {
+    width: min(46px, 72%);
+    height: max(2px, calc(var(--value) * 2.5px));
+    background: var(--color-text-muted);
+    border-radius: 2px 2px 0 0;
+  }
+  .gpa-label {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .highlighted .gpa-value,
+  .highlighted .gpa-label {
+    color: var(--color-accent);
+  }
+  .highlighted .gpa-bar {
+    background: var(--color-accent);
+  }
+  figcaption {
+    margin-top: 10px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  @media (max-width: 520px) {
+    .gpa-chart {
+      gap: 6px;
+      height: 220px;
+      padding-inline: 8px;
+    }
+    .gpa-band {
+      grid-template-rows: 24px 135px auto;
+    }
+    .gpa-track {
+      height: 135px;
+    }
+    .gpa-bar {
+      height: max(2px, calc(var(--value) * 2.1px));
+    }
+    .gpa-label {
+      font-size: 11px;
+    }
+  }
+</style>

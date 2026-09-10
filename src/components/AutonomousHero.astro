@@ -8,34 +8,74 @@
     >
   </div><div id="vehicle-scene">
     <div class="scene-fallback">
-      <span class="fallback-axis">y ↑<br />└── x</span><svg
+      <svg
         viewBox="0 0 500 300"
-        aria-hidden="true"
-        ><path
-          d="M-20 245C145 235 170 45 520 80M-20 280C140 270 198 95 520 117"
+        aria-label="Top-down view of a vehicle following the dashed route"
+        role="img"
+      >
+        <path
+          d="M-20 263C150 253 179 70 520 98"
           stroke="#b7c7be"
-          fill="none"></path><path
+          stroke-width="40"
+          fill="none"></path>
+        <path
+          d="M-20 263C150 253 179 70 520 98"
+          stroke="#fafbf9"
+          stroke-width="38"
+          fill="none"></path>
+        <path
+          data-route
           d="M-20 263C150 253 179 70 520 98"
           stroke="#176b61"
           stroke-width="2"
           stroke-dasharray="5 7"
-          fill="none"></path><circle cx="243" cy="116" r="7" fill="#176b61"
-        ></circle><circle
-          cx="243"
-          cy="116"
-          r="27"
-          fill="none"
-          stroke="#176b61"
-          opacity=".25"></circle></svg
-      >
+          fill="none"></path>
+        <g data-car transform="translate(228 157) rotate(-28)">
+          <path d="M0 -20V20" stroke="#6a9884" stroke-width="1.5"></path>
+          <circle cy="-20" r="2.5" fill="#176b61"></circle><circle
+            cy="20"
+            r="2.5"
+            fill="#176b61"></circle>
+          <rect x="-13" y="-8" width="26" height="16" rx="4" fill="#176b61"
+          ></rect>
+          <rect x="2" y="-6" width="5" height="12" rx="1" fill="#c4cec7"></rect>
+          <circle r="3" fill="#9cebc9"></circle>
+        </g>
+      </svg>
     </div>
+    <aside class="scene-telemetry" aria-label="Simulated lane sensor readings">
+      <div class="telemetry-heading">
+        <span><span class="telemetry-pulse"></span>Lane sensors</span><span
+          id="scene-mode">STATIC</span
+        >
+      </div>
+      <div class="telemetry-row">
+        <span>Left edge</span><strong id="scene-sensor-left">--</strong>
+      </div>
+      <div class="telemetry-meter">
+        <span id="scene-sensor-left-bar"></span>
+      </div>
+      <div class="telemetry-row">
+        <span>Right edge</span><strong id="scene-sensor-right">--</strong>
+      </div>
+      <div class="telemetry-meter">
+        <span id="scene-sensor-right-bar"></span>
+      </div>
+      <div class="telemetry-row">
+        <span>Speed</span><strong id="scene-speed">--</strong>
+      </div>
+      <div class="telemetry-row">
+        <span>Steering</span><strong id="scene-steering">--</strong>
+      </div>
+    </aside>
   </div><figcaption class="meta">
-    <span>Perceive. Plan. Move.</span><button
-      id="scene-toggle"
-      hidden
-      type="button"
-      aria-pressed="false">Pause motion</button
-    ><span class="scene-coordinate">x / y / θ</span>
+    <span class="radar-status"
+      ><span class="radar-dot"></span><span id="scene-status"
+        >Lane-following preview</span
+      ></span
+    ><button id="scene-toggle" hidden type="button" aria-pressed="false"
+      >Pause motion</button
+    >
   </figcaption>
 </figure>
 <style>
@@ -68,12 +108,71 @@
     background: radial-gradient(circle, #c4d0c8 0.6px, transparent 1px);
     background-size: 20px 20px;
   }
-  .fallback-axis {
+  .scene-fallback svg {
+    width: 100%;
+    height: 100%;
+  }
+  .scene-telemetry {
     position: absolute;
-    left: 18px;
-    bottom: 20px;
-    font: 11px var(--font-mono);
+    z-index: 2;
+    bottom: 16px;
+    right: 16px;
+    width: 150px;
+    padding: 10px 11px;
+    border: 1px solid rgba(23, 107, 97, 0.18);
+    background: rgba(250, 251, 249, 0.9);
     color: var(--color-text-muted);
+    font: 9px var(--font-mono);
+    letter-spacing: 0.04em;
+    pointer-events: none;
+  }
+  #vehicle-scene.fallback-active .scene-telemetry {
+    display: none;
+  }
+  .telemetry-heading,
+  .telemetry-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .telemetry-heading {
+    margin-bottom: 10px;
+    color: var(--color-accent);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .telemetry-pulse {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #9cebc9;
+    box-shadow: 0 0 0 2px rgba(156, 235, 201, 0.25);
+  }
+  .telemetry-row {
+    margin-top: 7px;
+  }
+  .telemetry-row strong {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .telemetry-meter {
+    height: 3px;
+    margin-top: 4px;
+    overflow: hidden;
+    background: #dfe8e1;
+  }
+  .telemetry-meter span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0.5);
+    transform-origin: left;
+    background: var(--color-accent);
+    transition: transform 80ms linear;
   }
   figcaption {
     display: flex;
@@ -94,6 +193,18 @@
   button:hover {
     color: var(--color-accent);
   }
+  .radar-status {
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .radar-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9cebc9;
+    box-shadow: 0 0 0 3px rgba(156, 235, 201, 0.22);
+  }
   @media (max-width: 800px) {
     .scene-top {
       font-size: 9px;
@@ -101,11 +212,12 @@
     .scene-top > span:last-child {
       display: none;
     }
-    .scene-coordinate {
-      display: none;
-    }
     #vehicle-scene {
       height: 260px;
+    }
+    .scene-telemetry {
+      bottom: 10px;
+      right: 10px;
     }
   }
   @media (max-width: 600px) {
@@ -119,20 +231,33 @@
     figcaption {
       font-size: 10px;
     }
+    .scene-telemetry {
+      width: 132px;
+      padding: 8px 9px;
+      font-size: 8px;
+    }
   }
 </style>
 <script>
+  import { mountFallback } from "../lib/autonomous-fallback";
   const host = document.getElementById("vehicle-scene");
   if (host) {
+    let stopFallback = mountFallback(host);
     const observer = new IntersectionObserver(
       async ([entry]) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
         try {
           const { mountScene } = await import("../lib/autonomous-scene");
-          mountScene(host);
+          stopFallback();
+          mountScene(host, () => {
+            stopFallback = mountFallback(host);
+          });
+          document.getElementById("scene-mode")!.textContent = "SIM";
         } catch {
-          /* Static trajectory remains available if enhancement cannot load. */
+          host.querySelector("canvas")?.remove();
+          stopFallback();
+          stopFallback = mountFallback(host);
         }
       },
       { rootMargin: "100px" },

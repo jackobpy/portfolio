@@ -5,7 +5,7 @@ export const profile = {
   email: "jakub.frechowicz@gmail.com",
   linkedin: "https://www.linkedin.com/in/jakubfrechowicz",
   intro:
-    "I build software and explore intelligent systems — with a particular interest in autonomous vehicles and the connection between learning and the physical world.",
+    "I’m studying computer science at ETH Zürich, after my bachelor’s at TU Delft. I’m especially interested in machine learning and autonomous vehicles.",
   languages: ["Polish · native", "English · C2", "German · B2", "Dutch · B1"],
   awards: [
     "SEMP Scholarship",

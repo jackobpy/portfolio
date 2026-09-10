@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ContentRow from "../../components/ContentRow.astro";
 import {
   graph,
+  sectionFor,
   related,
   period,
   labels,
@@ -12,7 +13,7 @@ import {
 } from "../../lib/content";
 export async function getStaticPaths() {
   return (await graph()).map((entry) => ({
-    params: { section: entry.collection, slug: entry.id },
+    params: { section: sectionFor(entry.collection), slug: entry.id },
     props: { entry },
   }));
 }
@@ -32,10 +33,10 @@ const article =
   title={e.data.title}
   description={e.data.summary}
   article={article}
-  noindex={e.data.sample}
+  noindex={e.data.sample || ("draft" in e.data && e.data.draft)}
   ><header class="page-heading">
     <div class="meta">
-      <a href={`/${e.collection}`}>{labels[e.collection]}</a> / {
+      <a href={`/${sectionFor(e.collection)}`}>{labels[e.collection]}</a> / {
         e.data.sample ? "Sample template" : (e.data.status ?? "Selected work")
       }
     </div><h1>{e.data.title}</h1><p>{e.data.summary}</p>
@@ -145,8 +146,7 @@ const article =
       <section class="related">
         <div class="section-head">
           <>
-            <h2>Connected work</h2>
-            <span class="meta">Follow the connections</span>
+            <h2>Related</h2>
           </>
         </div>
         {linked.map((entry) => (

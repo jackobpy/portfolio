@@ -70,5 +70,8 @@ test("raw personal documents and identifiers are not published", async () => {
     assert.ok(!s.includes("5987350"));
     assert.ok(!s.includes("March 30, 2004"));
   }
-  assert.ok(!all.some((f) => f.endsWith(".pdf")));
+  assert.deepEqual(
+    all.filter((f) => f.endsWith(".pdf")).map((f) => path.basename(f)),
+    ["tu-delft-academic-record-redacted.pdf"],
+  );
 });

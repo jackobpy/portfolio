@@ -347,6 +347,8 @@ canvas {
   font-size: 14px;
 }
 .prose {
+  min-width: 0;
+  width: 100%;
   max-width: var(--measure);
   overflow-wrap: break-word;
 }
@@ -429,7 +431,7 @@ canvas {
     gap: 30px;
   }
   .detail-grid {
-    grid-template-columns: 170px 1fr;
+    grid-template-columns: 170px minmax(0, 1fr);
     gap: 25px;
   }
   .nav {

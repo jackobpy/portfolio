@@ -1,0 +1,39 @@
+---
+const { id, title } = Astro.props;
+---
+
+<figure>
+  <iframe
+    src={`https://www.youtube.com/embed/${id}?rel=0`}
+    title={title}
+    loading="eager"
+    width="1280"
+    height="720"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  <figcaption>
+    <a href={`https://www.youtube.com/watch?v=${id}`}
+      >{title} · Watch on YouTube ↗</a
+    >
+  </figcaption>
+</figure>
+<style>
+  figure {
+    margin: 1.5rem 0;
+  }
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    background: #111;
+    border: 0;
+    border-radius: 4px;
+    display: block;
+  }
+  figcaption {
+    margin-top: 0.65rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+</style>

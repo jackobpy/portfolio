@@ -11,9 +11,10 @@ export const labels: Record<Kind, string> = {
   projects: "Project",
   experience: "Experience",
   education: "Education",
-  writing: "Writing",
+  writing: "Blog",
 };
-export const href = (e: Entry) => `/${e.collection}/${e.id}`;
+export const sectionFor = (kind: Kind) => (kind === "writing" ? "blog" : kind);
+export const href = (e: Entry) => `/${sectionFor(e.collection)}/${e.id}`;
 export function period(e: Entry) {
   const d = e.data;
   const format = (v: string) =>
@@ -29,7 +30,11 @@ export function period(e: Entry) {
 export async function entries(kind: Kind): Promise<Entry[]> {
   const all = await getCollection(kind);
   return all
-    .filter((e) => !("draft" in e.data && e.data.draft))
+    .filter(
+      (e) =>
+        !("draft" in e.data && e.data.draft) ||
+        (import.meta.env.DEV && e.id === "how-i-joined-prime"),
+    )
     .sort((a, b) =>
       kind === "writing"
         ? ("publishedAt" in b.data ? b.data.publishedAt.getTime() : 0) -

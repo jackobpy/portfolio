@@ -1,6 +1,6 @@
 ---
 title: "Linear algebra, made visual"
-summary: "Intuitive mathematical animations developed with professors at the Delft Institute of Applied Mathematics."
+summary: "Mission LAIKA: bringing linear algebra to life through kinematics, aerodynamics, and mathematical animation."
 dateStart: "2024-10"
 dateEnd: "2026-06"
 status: "completed"
@@ -12,14 +12,34 @@ relatedExperience: ["prime"]
 relatedEducation: ["tu-delft"]
 ---
 
-## Context
+import ProjectRepository from "../../components/ProjectRepository.astro";
+import ProjectVideo from "../../components/ProjectVideo.astro";
 
-Linear algebra becomes easier to understand when abstract operations can be seen. As an Educational Content Developer at PRIME, I collaborated with professors to translate complex concepts into intuitive animations.
+## Mission LAIKA
 
-## Audience
+**Linear Algebra in Kinematics and Aerodynamics** connects abstract mathematics to the problems aerospace engineering students encounter. Developed within PRIME at TU Delft, the project uses animations to make linear algebra visible in the context of motion and flight.
 
-The animations support engineering students and are watched by hundreds of students each year.
+I worked with professors at the Delft Institute of Applied Mathematics to translate mathematical concepts into visual explanations. The project’s animations were created by Stella Schultz and me using **Manim**, a Python library for mathematical animation.
 
-## Further detail
+## Learning the tools
 
-Selected animations and a discussion of the production process will be added here.
+I learned Manim from scratch for this project, working through the documentation and experimenting with how to build mathematical animations in code. I also used **Blender** to create 3D scenes. Bringing these tools together required both new technical skills and my linear algebra background: the scenes needed to communicate the mathematics clearly while remaining mathematically accurate.
+
+## From mathematics to motion
+
+The project is organised around engineering case studies, including _Cleared for take-off_, _Pitch perfect_, _Navigating Subspaces_, and _Swinging Back to Safety_. Each provides an applied setting for exploring linear algebra visually.
+
+<ProjectVideo id="ywKGTBe20Lc" title="Mission LAIKA · Cleared for take-off" />
+
+## Explore the project
+
+The repository brings together the animation source code and assets, with instructions for rendering the scenes using Manim.
+
+<ProjectRepository
+  owner="PRIME-TU-Delft"
+  name="MissionLAIKA"
+  url="https://github.com/PRIME-TU-Delft/MissionLAIKA"
+  description="Mathematical animations connecting linear algebra with kinematics and aerodynamics."
+/>
+
+The project also led to our paper, **Mission LAIKA: Linear Algebra in Kinematics and Aerodynamics**, included in the [SEFI 2026 conference programme](https://sefi-programme.netlify.app/).

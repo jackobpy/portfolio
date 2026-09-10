@@ -1,0 +1,283 @@
+---
+const reviews = [
+  "Really nice that you didn't tell me the exact answer and let me think (and was also slow in explanation, really good), but I wish you explained to me a bit more visually (i.e. drawing a bit more and not just redoing the thing in pseudocode)",
+  "Thanks for the nice explanation!",
+  "Made sure I understand the answers and guided my thinking to on my own come up with a solution",
+  "clear and friendly explanation",
+  "it was very helpful thanks",
+  "very helpful, helped me understand the example and explained variations of the example understand completely",
+  "we really appreciated your patience and kindness. The explanations were great! :)",
+  "He can make the Holy Roman Empire great again with his knowledge.",
+];
+---
+
+<section aria-labelledby="student-feedback-title">
+  <h2 id="student-feedback-title">Student feedback</h2>
+  <div class="feedback-panel">
+    <figure class="rating-chart">
+      <div class="rating-summary">
+        <strong>5.0 <span>/ 5</span></strong><span>23 student ratings</span>
+      </div>
+      <div
+        class="rating-bars"
+        role="img"
+        aria-label="Rating breakdown: 23 five-star ratings; zero one-, two-, three-, or four-star ratings."
+      >
+        {
+          [5, 4, 3, 2, 1].map((rating) => (
+            <div class="rating-row" aria-hidden="true">
+              <span>{rating} ★</span>
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  style={`width: ${rating === 5 ? 100 : 0}%`}
+                />
+              </div>
+              <span class="vote-count">{rating === 5 ? 23 : 0}</span>
+            </div>
+          ))
+        }
+      </div>
+      <figcaption>
+        Source: <a
+          href="https://queue.tudelft.nl"
+          target="_blank"
+          rel="noopener noreferrer">queue.tudelft.nl ↗</a
+        >
+        · After receiving help, students can leave a review for the teaching assistant
+        who helped them.
+      </figcaption>
+    </figure>
+    <div
+      class="feedback-carousel"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Written student reviews"
+    >
+      <button class="rotation-toggle" type="button" aria-pressed="false"
+        >Pause reviews</button
+      >
+      <div
+        class="feedback-track"
+        tabindex="0"
+        aria-label="Student reviews; scroll to read more"
+      >
+        {
+          reviews.map((review, index) => (
+            <div
+              class="feedback-slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${reviews.length}`}
+            >
+              <div class="stars" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                <p>{review}</p>
+              </blockquote>
+              <p class="review-credit">Anonymous student · TU Delft</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  section {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .feedback-panel {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .rating-chart {
+    margin: 0;
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+  .rating-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+  .rating-summary strong {
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    color: var(--color-text);
+  }
+  .rating-summary strong span {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+  .rating-bars {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .rating-row {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr) 1.5rem;
+    align-items: center;
+    gap: 0.75rem;
+    font: 0.875rem var(--font-mono);
+  }
+  .bar-track {
+    height: 0.65rem;
+    background: var(--color-surface);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--color-accent);
+  }
+  .vote-count {
+    text-align: right;
+    color: var(--color-text-muted);
+  }
+  figcaption {
+    margin-top: 0.65rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  .feedback-carousel {
+    min-width: 0;
+  }
+  .rotation-toggle {
+    display: block;
+    margin: 1rem clamp(1rem, 4vw, 2rem) 0 auto;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-muted);
+    font: inherit;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .feedback-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .feedback-track::-webkit-scrollbar {
+    display: none;
+  }
+  .feedback-track:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+  .feedback-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: clamp(1rem, 4vw, 2rem);
+    scroll-snap-align: start;
+  }
+  .stars {
+    color: var(--color-accent);
+    letter-spacing: 0.16em;
+    font-size: 1.25rem;
+  }
+  .feedback-slide blockquote {
+    border: 0;
+    padding: 0;
+    margin: 1rem 0;
+    color: var(--color-text);
+  }
+  .feedback-slide blockquote p {
+    margin: 0;
+  }
+  .review-credit {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+</style>
+<script>
+  document
+    .querySelectorAll<HTMLElement>(".feedback-carousel")
+    .forEach((carousel) => {
+      const track = carousel.querySelector<HTMLElement>(".feedback-track")!;
+      const count = track.children.length;
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      const toggle =
+        carousel.querySelector<HTMLButtonElement>(".rotation-toggle")!;
+      let paused = reducedMotion.matches;
+      let touching = false;
+      let timer: ReturnType<typeof setTimeout>;
+      const current = () =>
+        track.clientWidth
+          ? Math.round(track.scrollLeft / track.clientWidth)
+          : 0;
+      const stop = () => clearTimeout(timer);
+      const updateToggle = () => {
+        toggle.textContent = paused ? "Play reviews" : "Pause reviews";
+        toggle.setAttribute("aria-pressed", String(paused));
+      };
+      const go = (direction: number) => {
+        const index = (current() + direction + count) % count;
+        track.scrollTo({
+          left: index * track.clientWidth,
+          behavior: reducedMotion.matches ? "instant" : "smooth",
+        });
+      };
+      const schedule = () => {
+        stop();
+        if (paused || touching || document.hidden || count < 2) return;
+        timer = setTimeout(() => {
+          go(1);
+          // Keep rotating even if no scroll event is emitted.
+          schedule();
+        }, 7000);
+      };
+      toggle.addEventListener("click", () => {
+        paused = !paused;
+        updateToggle();
+        schedule();
+      });
+      track.addEventListener("scroll", schedule, { passive: true });
+      track.addEventListener(
+        "touchstart",
+        () => {
+          touching = true;
+          stop();
+        },
+        { passive: true },
+      );
+      const endTouch = () => {
+        touching = false;
+        schedule();
+      };
+      track.addEventListener("touchend", endTouch, { passive: true });
+      track.addEventListener("touchcancel", endTouch, { passive: true });
+      document.addEventListener("visibilitychange", schedule);
+      reducedMotion.addEventListener("change", () => {
+        paused = reducedMotion.matches;
+        updateToggle();
+        schedule();
+      });
+      track.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          paused = true;
+          updateToggle();
+          stop();
+          go(event.key === "ArrowRight" ? 1 : -1);
+        }
+      });
+      updateToggle();
+      schedule();
+    });
+</script>

@@ -3,35 +3,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ContentRow from "../components/ContentRow.astro";
 import { entries, labels, type Kind } from "../lib/content";
 export function getStaticPaths() {
-  return ["work", "projects", "experience", "education", "writing"].map(
+  return ["work", "projects", "experience", "education", "blog"].map(
     (section) => ({ params: { section } }),
   );
 }
 const section = Astro.params.section!;
 const meta: Record<string, [string, string]> = {
-  work: [
-    "Work",
-    "Projects, professional experience, and the education behind them.",
-  ],
+  work: ["Work", "My projects, experience, and education."],
   projects: ["Projects", "Software, research, and visual explanations."],
-  experience: [
-    "Experience",
-    "Building useful software and helping others understand the ideas behind it.",
-  ],
-  education: [
-    "Education",
-    "A foundation in computer science, mathematics, and intelligent systems.",
-  ],
-  writing: [
-    "Writing",
-    "Research notes, project reflections, and technical ideas.",
-  ],
+  experience: ["Experience", "Software development and teaching roles."],
+  education: ["Education", "My studies at ETH Zürich and TU Delft."],
+  blog: ["Blog", "Research notes, project reflections, and technical ideas."],
 };
 const [title, description] = meta[section];
 const groups: Kind[] =
   section === "work"
     ? ["projects", "experience", "education"]
-    : [section as Kind];
+    : [section === "blog" ? "writing" : (section as Kind)];
 const data = await Promise.all(
   groups.map(async (kind) => ({ kind, items: await entries(kind) })),
 );
@@ -40,10 +28,14 @@ const data = await Promise.all(
 <BaseLayout title={title} description={description}
   ><header class="page-heading">
     <div class="meta">
-      {section === "writing" ? "Notes & articles" : "A connected body of work"}
+      {
+        section === "blog"
+          ? "Notes & articles"
+          : "Projects, experience & education"
+      }
     </div><h1>{title}</h1><p>{description}</p>
   </header>{
-    section !== "writing" && (
+    section !== "blog" && (
       <nav class="index-nav" aria-label="Work categories">
         {["work", "projects", "experience", "education"].map((s) => (
           <a href={`/${s}`} aria-current={s === section ? "page" : undefined}>
@@ -54,7 +46,7 @@ const data = await Promise.all(
     )
   }<div class="page-content">
     {
-      section === "writing" &&
+      section === "blog" &&
         data.some((g) => g.items.some((e) => e.data.sample)) && (
           <p class="notice">
             The entries below are clearly labelled sample templates. Original

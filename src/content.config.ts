@@ -47,7 +47,7 @@ export const collections = {
   experience: entity("experience"),
   education: entity("education"),
   writing: defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writing" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
     schema: shared.extend({
       publishedAt: z.coerce.date(),
       updatedAt: z.coerce.date().optional(),
