@@ -115,6 +115,9 @@
     background: radial-gradient(circle, #c7ded2 0.6px, transparent 1px);
     background-size: 20px 20px;
   }
+  #vehicle-scene.scene-active .scene-fallback {
+    display: none;
+  }
   .scene-fallback svg {
     width: 100%;
     height: 100%;
@@ -257,10 +260,13 @@
           const { mountScene } = await import("../lib/autonomous-scene");
           stopFallback();
           mountScene(host, () => {
+            host.classList.remove("scene-active");
             stopFallback = mountFallback(host);
           });
+          host.classList.add("scene-active");
           document.getElementById("scene-mode")!.textContent = "Simulation";
         } catch {
+          host.classList.remove("scene-active");
           host.querySelector("canvas")?.remove();
           stopFallback();
           stopFallback = mountFallback(host);
