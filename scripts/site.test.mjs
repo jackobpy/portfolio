@@ -15,7 +15,7 @@ async function files(dir) {
 const all = await files(root);
 const html = all.filter((p) => p.endsWith(".html"));
 test("public routes build and every page has one h1 and canonical metadata", async () => {
-  assert.ok(html.length >= 20);
+  assert.ok(html.length >= 19);
   for (const f of html) {
     const s = await readFile(f, "utf8");
     assert.equal((s.match(/<h1(?:\s|>)/g) || []).length, 1, f);

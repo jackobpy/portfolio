@@ -103,10 +103,6 @@ The CV uses `cv.show`, `cv.priority`, and `cv.summary` from the content entries.
 
 PDF generation is not a build dependency. There is no fake download link. Browser Save as PDF is the supported path. The source CV remains unchanged.
 
-## Hero
-
-`AutonomousHero.astro` renders a static trajectory diagram immediately. An IntersectionObserver loads `autonomous-scene.ts` only near the viewport. Three.js builds a vehicle from primitives, with an orthographic camera, trajectory, road, sparse sensor points and restrained motion. Pixel ratio is capped at 1.5. Animation pauses offscreen, in hidden tabs, on user request, or with reduced motion. ResizeObserver handles layout changes. Page exit disposes GPU resources and listeners. WebGL/context failure leaves the static fallback intact. Core content and navigation never depend on JavaScript.
-
 ## Styling and metadata
 
 Edit CSS custom properties in `src/styles/tokens.css`. The system font stack avoids external requests. Indexes use the wider editorial measure and prose uses a narrower one. A minimal navigation stays visible on mobile without a menu script. Metadata uses `https://jakubfrechowicz.com` as canonical; RSS is `/rss.xml`, and Astro generates the sitemap. Default social artwork is `public/og-default.png`; replace it with another 1200×630 PNG while preserving the URL. SVG favicon and Apple touch icon are included.

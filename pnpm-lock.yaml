@@ -19,16 +19,10 @@ importers:
       astro:
         specifier: ^5.13.0
         version: 5.18.2(@types/node@24.13.3)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0)
-      three:
-        specifier: ^0.180.0
-        version: 0.180.0
     devDependencies:
       "@astrojs/check":
         specifier: ^0.9.4
         version: 0.9.10(prettier-plugin-astro@0.14.1)(prettier@3.9.6)(typescript@5.9.3)
-      "@types/three":
-        specifier: ^0.180.0
-        version: 0.180.0
       prettier:
         specifier: ^3.6.2
         version: 3.9.6

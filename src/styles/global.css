@@ -116,19 +116,18 @@ canvas {
 }
 .hero {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 36px;
+  grid-template-columns: minmax(0, 760px);
   align-items: center;
   padding: 85px 0 65px;
 }
 .hero h1 {
   margin: 23px 0;
-  max-width: 570px;
+  max-width: 720px;
 }
 .hero .intro {
   font-size: 17px;
   color: var(--color-text-muted);
-  max-width: 470px;
+  max-width: 650px;
 }
 .hero-links {
   display: flex;

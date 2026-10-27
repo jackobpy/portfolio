@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AutonomousHero from "../components/AutonomousHero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ContentRow from "../components/ContentRow.astro";
 import { entries } from "../lib/content";
@@ -19,14 +18,15 @@ const writing = (await entries("writing"))
   ><section class="hero">
     <div>
       <div class="meta"><span class="dot"></span>Zürich, Switzerland</div><h1>
-        Hi, I’m Jakub.<br /><span class="accent">Computer scientist.</span
+        Hi, I’m Jakub.<br /><span class="accent"
+          >Architecture & visualisations.</span
         >
       </h1><p class="intro">{profile.intro}</p><div class="hero-links">
         <a class="button" href="/work"
           >My experience <span aria-hidden="true">↗</span></a
         ><a href="/cv">View CV <span aria-hidden="true">↗</span></a>
       </div>
-    </div><AutonomousHero />
+    </div>
   </section><div class="current-strip">
     <div>
       <span class="meta">Currently pursuing</span><p>
@@ -38,7 +38,7 @@ const writing = (await entries("writing"))
       </p>
     </div><div>
       <span class="meta">Interested in</span><p>
-        Autonomous vehicles & intelligent systems
+        Architecture & visualisations
       </p>
     </div>
   </div><section class="section">
@@ -76,8 +76,9 @@ const writing = (await entries("writing"))
   </section><section class="about-strip">
     <div><h2>About me</h2></div><div>
       <p>
-        I’m interested in autonomous vehicles and machine learning. I also enjoy
-        teaching and making animations that explain mathematics.
+        I’m interested in architecture, visualisations, and making complex
+        systems easier to understand. I also enjoy teaching and creating
+        animations that explain mathematics.
       </p><div class="hero-links">
         <a href="/about">More about me ↗</a><a href={`mailto:${profile.email}`}
           >Get in touch ↗</a
